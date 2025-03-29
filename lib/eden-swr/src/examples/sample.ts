@@ -1,5 +1,5 @@
 import { Elysia, t } from "elysia";
-import { createEdenSWR } from "..";
+import { createUseEdenSWR } from "..";
 
 const app = new Elysia()
   .get("/", () => {
@@ -37,7 +37,7 @@ const app = new Elysia()
 
 const url = "/api";
 
-const { eden, fetch, useEdenSWR } = createEdenSWR<typeof app>(url);
+const useEdenSWR = createUseEdenSWR<typeof app>(url);
 
 const { data: indexData } = useEdenSWR("/index" /* ✅ typed! */);
 // 📝 note, that this query WORKS in eden-swr

@@ -51,11 +51,11 @@ yarn add eden-swr
 Kickstart with a simple, fully-typed React component:
 
 ```typescript
-import { createEdenSWR } from "eden-swr";
+import { createUseEdenSWR } from "eden-swr";
 import type { App } from "./your-elysia-app";
 
 // Creating SWR hooks with full TypeScript support 🚀
-const { useEdenSWR, fetch: fetchEden } = createEdenSWR<App>("/api");
+const useEdenSWR = createUseEdenSWR<App>("/api");
 
 function UserProfile({ userId }: { userId: string }) {
   // Using SWR hook with full type inference //
@@ -168,29 +168,6 @@ const { data: paramsData2 } = useEdenSWR(
 Documentation on SWR options: https://swr.vercel.app/docs/api
 
 ---
-
-## Ok, how do I use it for sending data? 🤔
-
-SWR is built to fetch data. But you also been provided with eden [fetch](https://elysiajs.com/eden/fetch.html) and eden [treaty](https://elysiajs.com/eden/treaty/overview.html).
-
-Choose what suits you the best.
-
-```typescript
-import { createEdenSWR, fetch, eden } from "eden-swr";
-
-const onSubmit = () => {
-  eden.user.post({ name: "John" }).then((d) => d.data);
-};
-
-const onSubmit2 = () => {
-  await fetch("/user", {
-    method: "POST",
-    body: {
-      name: "John",
-    },
-  });
-};
-```
 
 ## Key Features
 

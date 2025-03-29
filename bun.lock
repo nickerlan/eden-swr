@@ -2,7 +2,7 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "eden-swr",
+      "name": "eden-swr-monorepo",
       "devDependencies": {
         "@types/bun": "latest",
       },
@@ -11,8 +11,8 @@
       },
     },
     "lib/eden-swr": {
-      "name": "eden-swr-lib",
-      "version": "0.3.1",
+      "name": "eden-swr",
+      "version": "0.4.1",
       "devDependencies": {
         "@elysiajs/eden": "^1.2.0",
         "elysia": "^1.2.25",
@@ -180,7 +180,7 @@
 
     "eastasianwidth": ["eastasianwidth@0.2.0", "", {}, "sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA=="],
 
-    "eden-swr-lib": ["eden-swr-lib@workspace:lib/eden-swr"],
+    "eden-swr": ["eden-swr@workspace:lib/eden-swr"],
 
     "elysia": ["elysia@1.2.25", "", { "dependencies": { "@sinclair/typebox": "^0.34.27", "cookie": "^1.0.2", "memoirist": "^0.3.0", "openapi-types": "^12.1.3" }, "peerDependencies": { "typescript": ">= 5.0.0" }, "optionalPeers": ["typescript"] }, "sha512-WsdQpORJvb4uszzeqYT0lg97knw1iBW1NTzJ1Jm57tiHg+DfAotlWXYbjmvQ039ssV0fYELDHinLLoUazZkEHg=="],
 
