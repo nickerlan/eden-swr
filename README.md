@@ -76,6 +76,34 @@ function UserProfile({ userId }: { userId: string }) {
 }
 ```
 
+See usage examples [here](https://github.com/nickerlan/eden-swr/blob/main/src/examples/sample.ts)
+
+---
+
+Below is an example of exporting the Elysia app type for the route "/params/:param1/:param2":
+
+```typescript
+import { Elysia, t } from "elysia";
+
+const app = new Elysia().get(
+  "/params/:param1/:param2",
+  ({ params }) => ({
+    params: { param1: params.param1, param2: params.param2 },
+  }),
+  {
+    params: t.Object({
+      param1: t.String(),
+      param2: t.String(),
+    }),
+  }
+);
+
+// Export the Elysia app type
+export type App = typeof app;
+```
+
+This example demonstrates how to create a simple Elysia app with the specified route and export its type.
+
 ---
 
 ### Query Parameters Example
@@ -141,29 +169,43 @@ Documentation on SWR options: https://swr.vercel.app/docs/api
 
 ---
 
-## Best Practices ✅
+## Ok, how do I use it for sending data? 🤔
 
-- **Always Use Typed Hooks:** Leverage TypeScript for error prevention and excellent auto-completion.
-- **Explicit Parameter Definitions:** Provide both `params` and `query` objects for complete type safety.
-- **Utilize SWR's Features:** Enable revalidation on focus, caching, and auto-refresh for a seamless experience.
-- **Integrate Effortlessly:** Perfect for both React components and NextJS pages – no extra boilerplate required!
+SWR is built to fetch data. But you also been provided with eden [fetch](https://elysiajs.com/eden/fetch.html) and eden [treaty](https://elysiajs.com/eden/treaty/overview.html).
+
+Choose what suits you the best.
+
+```typescript
+import { createEdenSWR, fetch, eden } from "eden-swr";
+
+const onSubmit = () => {
+  eden.user.post({ name: "John" }).then((d) => d.data);
+};
+
+const onSubmit2 = () => {
+  await fetch("/user", {
+    method: "POST",
+    body: {
+      name: "John",
+    },
+  });
+};
+```
+
+## Key Features
+
+- **Type-Safe Development:** Leverage TypeScript for error prevention, auto-completion, and comprehensive parameter validation
+- **SWR Power Features:** Take advantage of automatic revalidation, intelligent caching, and configurable refresh intervals
+- **Zero Configuration:** Works immediately with React and NextJS without providers or complex setup
+- **Developer Experience:** Focus on building features rather than configuring tools
 
 ---
 
-## Key Concepts & Selling Points 🌈
+## Why eden-swr? ✅
 
-- **Eden Hooks for React & NextJS:** Instantly integrate with [Elysia Eden](https://elysiajs.com/eden/overview.html) for smooth, type-safe data fetching.
-- **No Complex Context Providers:** Forget extra setup; just use our hooks directly.
-- **Full Type Safety Out-Of-The-Box:** Boost your productivity and reliability with comprehensive TypeScript support.
-- **Zero Overhead:** Spend more time building features and less time configuring tools.
-
----
-
-## Why Choose eden-swr?
-
-- **Simplicity:** Seamless integration of two powerful tools – [Elysia Eden](https://elysiajs.com/eden/overview.html) and [SWR](https://swr.vercel.app/) – without any hassles.
-- **Ease of Use:** Minimal configuration for a modern, responsive application.
-- **Reliability:** Enjoy automatic data revalidation and full type safety that prevents runtime errors.
+- **Perfect Integration:** Combines [Elysia Eden](https://elysiajs.com/eden/overview.html) and [SWR](https://swr.vercel.app/) into a seamless experience
+- **Zero overhead:** Minimal API surface with maximum functionality
+- **Performance Oriented:** Optimized for both development speed and runtime efficiency
 
 ---
 
