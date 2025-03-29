@@ -1,40 +1,19 @@
 {
   "name": "eden-swr",
-  "version": "0.3.3",
-  "description": "React/NextJS SWR hooks for Elysia applications with fully typed Eden",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "type": "module",
-  "files": [
-    "dist",
-    "README.md"
+  "private": true,
+  "workspaces": [
+    "lib/eden-swr"
   ],
+  "type": "module",
   "scripts": {
-    "build": "tsup",
-    "lint": "tsc",
-    "prepublishOnly": "npm run build"
-  },
-  "peerDependencies": {
-    "@elysiajs/eden": ">=1.2.0",
-    "elysia": ">=1.2.0",
-    "swr": ">=2.3.0"
+    "build": "npm run build -w lib/eden-swr",
+    "prepublish": "npm run build",
+    "publish": "cd lib/eden-swr && npm publish"
   },
   "devDependencies": {
-    "@elysiajs/eden": "^1.2.0",
-    "elysia": "^1.2.25",
-    "swr": "^2.3.3",
-    "tsup": "^8.4.0",
-    "typescript": "^5.8.2"
+    "@types/bun": "latest"
   },
-  "keywords": [
-    "elysia",
-    "eden",
-    "swr",
-    "react",
-    "hook",
-    "fetch",
-    "typescript"
-  ],
-  "license": "MIT"
+  "peerDependencies": {
+    "typescript": "^5"
+  }
 }
