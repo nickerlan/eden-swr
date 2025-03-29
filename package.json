@@ -1,6 +1,6 @@
 {
   "name": "eden-swr",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "React/NextJS SWR hooks for Elysia applications with fully typed Eden",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
