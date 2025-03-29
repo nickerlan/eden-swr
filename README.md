@@ -24,9 +24,22 @@
 
 ## Installation 🛠️
 
+Install the package via npm, bun, pnpm or yarn
+
 ```bash
-# Install the package via npm (replace <package-name> with your package name)
 npm install eden-swr
+```
+
+```bash
+bun i eden-swr
+```
+
+```bash
+pnpm i eden-swr
+```
+
+```bash
+yarn add eden-swr
 ```
 
 ---
