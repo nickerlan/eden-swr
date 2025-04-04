@@ -99,10 +99,25 @@ export function createUseEdenSWR<
   function useEdenSWR<P extends KnownEndpoints>(
     path: P,
     options: any = {},
-    swrOptions: SWRConfiguration & { cacheKey?: string } = {}
+    swrOptions: SWRConfiguration & {
+      cacheKey?: string | (() => string | null) | undefined;
+      shouldFetch?: boolean;
+    } = {}
   ): SWRResponse<any, any> {
-    const cacheKey =
-      swrOptions.cacheKey ?? createCacheKey(path as string, options);
+    let cacheKey: string | null | (() => string | null) = "";
+    if (swrOptions.shouldFetch === false) {
+      cacheKey = null;
+    } else {
+      if (
+        typeof swrOptions.cacheKey === "function" ||
+        typeof swrOptions.cacheKey === "string"
+      ) {
+        cacheKey = swrOptions.cacheKey;
+      } else {
+        if (swrOptions.cacheKey === undefined)
+          cacheKey = createCacheKey(path as string, options);
+      }
+    }
 
     return useSWR<
       P extends keyof Endpoints
