@@ -155,7 +155,8 @@ const { data: paramsData2 } = useEdenSWR(
     query: { search: "123" },
   },
   {
-    cacheKey: "/params/one/two?three=four", // 🎯 Custom cache key
+    cacheKey: "/params/one/two?three=four", // 🎯 Custom cache key (functions supported as well)
+    shouldFetch: !!someDependency, // Can prevent from fetching, also can be done by setting cacke key to null
     //by default, cahce key would be /params/123/456?search=123
     revalidateOnFocus: true, // 🌐 Revalidate on focus
     refreshInterval: 1000, // 🌐 Auto-refresh every second

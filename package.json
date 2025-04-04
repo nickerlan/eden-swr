@@ -8,7 +8,7 @@
   "scripts": {
     "build": "npm run build -w lib/eden-swr",
     "prepublish": "npm run build",
-    "publish": "cd lib/eden-swr && npm publish"
+    "publish": "cd lib/eden-swr && npm version patch && npm publish"
   },
   "devDependencies": {
     "@types/bun": "latest"
